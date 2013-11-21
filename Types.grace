@@ -8,8 +8,10 @@ type Vect = {
     get -> Number
 }
 
-// Example of instantiating a variable of the type
-var v : vect = object {
+// Example of instantiating a variable of the type Vect
+// Note that you don't need to implemet the methods here
+// but you can if you want
+var vec1 : Vect := object {
 
     def x : Number is public = 1
     def y : Number is public = 2
@@ -18,7 +20,8 @@ var v : vect = object {
 }
 
 
-// Example of a class that [implements?] the type
+// Example of a class that [implements?] the type Vect.
+// Note that you DO need to implemet the methods here
 class Vector.new(x', y', z') -> Vect {
     def x is readable = x'
     def y is readable = y'
@@ -38,9 +41,10 @@ class Vector.new(x', y', z') -> Vect {
     }
 }
 
-// Example of instantiating a variable of the class
-def vec = Vector.new(1, 2, 3)
 
-vec.printVec
-print(vec.get("y"))
-print(vec.x)
+// Example of instantiating a variable of the class
+def vec2 = Vector.new(1, 2, 3)
+
+vec2.printVec
+print(vec2.get("y"))
+print(vec2.x)
