@@ -1,8 +1,11 @@
 # Ignore everything
 *
-!.gitignore
+
 # Apart from Grace files
 !*.grace
+
+# and this
+!.gitignore
 
 # and Doges -_-
 !*.jpeg
