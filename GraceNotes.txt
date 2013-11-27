@@ -1,0 +1,180 @@
+//Lambdas
+
+Just special types of anonymous methods.
+
+Blocks are essentially lamba's so { anything in here is part of the lambda}
+to specify arguments within the lambda you can do  this : {a,b,c -> someFunction(a,b,c)}
+where a,b and c would be the arguments of the lambda
+
+Then use .apply (passing all arguments the lambda needs to use) to call the function
+
+def someOther = {
+    l ->
+    for(l) do {
+        i ->
+        print(i)
+    }
+
+}.apply(4..(10))
+
+This will assign the return type of the lambda to someOther, not the lambda itself. So in this case it is assigned done
+
+//Ranges
+Haskell style ranges do not work either, with specifying the step, i.e. (4,7..19)
+Negative ranges do not work. I.e. (4..(-5)) does not give a range [4,3,2,1,0,-1,-2,-3,-4,-5] but will give [].
+You need to use brackets around a variable if you are going to use it as part of a range like:
+
+var a := 23
+
+(4..(a)) to get a range from 4 to 23  
+
+//Classes
+
+The constructor is essentially a a method in it's own right. So you can do all that stuff with multiple argument groupings.
+
+
+
+Multiple constructors?
+apparently white space is allowed in the constructor names, however it will treat multiple whitespaces as just one 
+and even then it will only be allowed directly after one of the right parenthesis.
+
+//objects
+
+Objects are essentially anonymous class, that is you can create and return them without a names
+
+object{
+    var variablesHere :=42
+    method someMethod{}
+}
+
+Then when you have a variable with reference to this object you can call someMethod or (if the access specifier is appropriate)
+use and change the field.
+
+//Access specifiers
+
+There are 5 different access specifier, some are different from the standard ones though.
+
+public - this is like you would expect, provides read and write access to everyone that has the object
+confidential - allows read and write access to the class and children of the class, noone else.
+readable - allows read access to everyone that has the object
+writable - allows write access to everyone that has the object
+
+the default specifier (The one you get when you specify nothing) is confidential
+
+//inheritance
+
+uses super to access the super classes fields and methods. Uses the inherits keyword as the first line in the class
+and it must supply arguments for the super classes constructor.
+
+//Methods 
+
+You can specify multiple arguments groups for method headers like:
+
+method someMethod(arg1 : Number)moreOfTheMethodHeader(arg2:Number){
+
+}
+
+also the arguments can be dynamically specified or statically specified (as I have done above)
+
+you can also specify multiple 
+
+//Return types
+
+This one will return done, a keyword of type (Fuck knows???) which only has a couple of methods
+method SomeMethod{
+    var variable := "Some String"
+
+    print(variable)
+}
+
+This one will return the variable object, so any method that does not specify a return type will
+take whatever the last line of the method is and return it. 
+method SomeMethod{
+    var variable := "Some String"
+
+    variable
+}
+
+This is another thing that will return done. 
+method SomeMethod{
+    var variable := "Some String"
+}
+
+This one will return as expected, returning the string "string string"
+method SomeOtherMethod -> String{
+    var b := "string string"
+    return b
+}
+
+//Done object
+
+returned from a method that doesn't define something to return so anything that does a method on the last 
+line that does not return anything.
+Has these methods that can be called on it.
+  ==
+  !=
+  asDebugString
+  asString
+
+
+//IO module
+
+hsa these methods
+
+  input     //Another class that has the following methods (for getting input from the user)
+      - read
+      - getline
+      - write
+      - close
+      - seek
+      - seekForward
+      - seekBackward
+      - iter
+      - havemore
+      - next
+      - readBinary
+      - writeBinary
+      - eof
+      - isatty
+      - ==
+      - !=
+
+  output   //this is another class in it's own right, has these methods on it
+      - read
+      - getline
+      - write
+      - close
+      - seek
+      - seekForward
+      - seekBackward
+      - iter
+      - havemore
+      - next
+      - readBinary
+      - writeBinary
+      - eof
+      - isatty
+      - ==
+      - !=
+
+  error
+  open
+  system  //takes a string that is piped to the terminal
+  exists
+  newer
+  spawn
+  spawnv
+  realpath
+
+
+//Strings
+string cocatenation is ++ but this could be overriden
+
+
+//list of things that are weird
+break statements - should they be there
+is readable, writable the same as writing public? Or are there some other things to take into consideration
+multiple constructors? Is it a thing? How to do it? Should it be a thing?
+allowing access specifiers on methods? To allow for private methods.  there is syntax method name(arguments) is public -> returnType
+Can you inherit from objects? yes
+regex? Is it in there, should we add it to the string class?
